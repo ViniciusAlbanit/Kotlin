@@ -1,0 +1,506 @@
+//////////////////////////////////////////////////////
+fun main() {
+    val kotlin = "🙂"
+    println(kotlin)
+}
+//////////////////////////////////////////////////////
+/* programa básico */
+fun main() {
+    println("Hello, World!")
+}
+//////////////////////////////////////////////////////
+/* programa básico */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    println("Hello, World!")
+}
+//////////////////////////////////////////////////////
+/* funções print e println */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    print("Hello, World!")
+    println("Hello, World!")
+    println("Kotlin")
+}
+//////////////////////////////////////////////////////
+/* String templates */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    var nome = "Carmen"
+    println("Olá $nome")
+    println("$nome possui ${nome.length} letras")
+    var nome_completo = "$nome Regina"
+    println(nome_completo)
+}
+//////////////////////////////////////////////////////
+/* var e val */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    var nome:String = "Carmen"
+    println("Olá $nome")
+    nome = "Carmen Regina"
+    println("Olá $nome")
+}
+//////////////////////////////////////////////////////
+/* var e val */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    var nome:String = "Carmen"
+    println("Olá $nome")
+    var sobrenome = "Regina"
+    println("Olá $nome $sobrenome")
+}
+//////////////////////////////////////////////////////
+/* var e val */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    val nome:String = "Carmen"
+    println("Olá $nome")
+    nome = "Carmen Regina" // erro de compilação - Val cannot be reassigned
+    println("Olá $nome")
+}
+//////////////////////////////////////////////////////
+/* conversão de tipos: as e is */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    var s:Any = "Carmen"
+    println(s as String) // transforma s em uma String
+    println(s as? Int) // cast seguro: não é possível converter String em Int
+    if (s is String) { // verdadeiro: converte s em uma String
+        println("$s é uma string")
+    }
+}
+//////////////////////////////////////////////////////
+/* objetos nulos (Null Safety) */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    var nome = "Carmen"
+    println("Olá $nome")
+    nome = null // Erro de compilação
+    println("Olá $nome")
+}
+//////////////////////////////////////////////////////
+/* objetos nulos (Null Safety) */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    var nome:String? = "Carmen"
+    println("Olá $nome")
+    nome = null // OK
+    println("Olá $nome")
+}
+//////////////////////////////////////////////////////
+/* objetos nulos (Null Safety) */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    var nome:String? = "Carmen"
+    println("Olá $nome")
+    nome = null // OK
+    println("Olá $nome")
+    println("$nome possui ${nome.length} caracteres") // Erro de compilação
+}
+//////////////////////////////////////////////////////
+/* objetos nulos (Null Safety) */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    var nome:String? = "Carmen"
+    println("Olá $nome")
+    nome = null // OK
+    println("Olá $nome")
+    if (nome != null) {
+        println("$nome possui ${nome.length} caracteres")
+    }
+}
+//////////////////////////////////////////////////////
+/* objetos nulos (Null Safety) */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+    var nome:String? = "Carmen"
+    println("Olá $nome")
+    nome = null // OK
+    println("Olá $nome")
+    println("$nome possui ${nome?.length} caracteres") // Erro de compilação
+}
+//////////////////////////////////////////////////////
+/* operador ternário */
+package org.kotlinlang.play
+
+fun parOuImpar(a: Int): String {
+    if (a % 2 == 0) {
+        return "$a é par"
+    }
+    else {
+        return "$a é impar"
+    }
+}
+
+fun main(args: Array<String>) {
+    println(parOuImpar(1))
+    println(parOuImpar(2))
+}
+//////////////////////////////////////////////////////
+/* operador ternário */
+package org.kotlinlang.play
+
+fun parOuImpar(a: Int): String {
+    if (a % 2 == 0) {
+        return "$a é par"
+    }
+    return "$a é impar"
+}
+
+fun main(args: Array<String>) {
+    println(parOuImpar(1))
+    println(parOuImpar(2))
+}
+//////////////////////////////////////////////////////
+/* operador ternário */
+package org.kotlinlang.play
+
+fun parOuImpar(a: Int): String {
+    return if (a % 2 == 0) "$a é par" else "$a é impar"
+}
+
+fun main(args: Array<String>) {
+    println(parOuImpar(1))
+    println(parOuImpar(2))
+}
+//////////////////////////////////////////////////////
+/* operador Elvis (?:) */
+package org.kotlinlang.play
+
+fun enviarEmail(usuario: String, titulo: String? = null): String {
+    val s = titulo?: "Bem vinda"
+    return "$s $usuario"
+}
+
+fun main(args: Array<String>) {
+    println(enviarEmail("Carmen"))
+    println(enviarEmail("Carmen", "Olá"))
+}
+//////////////////////////////////////////////////////
+/* operador Elvis (?:) */
+package org.kotlinlang.play
+
+fun enviarEmail(usuario: String, titulo: String? = null): String {
+    val s = titulo?: "Bem vinda"
+    return "$s $usuario"
+}
+
+fun main(args: Array<String>) {
+    println(enviarEmail("Carmen"))
+    println(enviarEmail(titulo = "Olá", usuario = "Carmen", ))
+}
+//////////////////////////////////////////////////////
+/* Funções */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+	var nome = "Carmen"
+	imprimir(nome)
+	val soma = somar(2, 3)
+	imprimir("Soma: $soma")
+}
+
+// recebe uma string e não retorna nada (Unit)
+fun imprimir(s: String): Unit {
+	println(s)
+}
+
+// Recebe 2 inteiros e retorna uma inteiro
+fun somar(a: Int, b: Int): Int {
+	return a + b
+}
+//////////////////////////////////////////////////////
+/* Funções - sintaxe resumida */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+	var nome = "Carmen"
+	imprimir(nome)
+	val soma = somar(2, 3)
+	imprimir("Soma: $soma")
+}
+
+// recebe uma string e não retorna nada (Unit)
+fun imprimir(s: String) = println(s)
+
+// Recebe 2 inteiros e retorna uma inteiro
+fun somar(a: Int, b: Int) = a + b
+//////////////////////////////////////////////////////
+/* Funções - parâmetros padrões */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) {
+	var i = getInteiro("5")
+	println(i)
+	i = getInteiro(null)
+	println(i)
+	i = getInteiro(null, 2)
+	println(i)
+}
+
+// Função que transforma uma string num inteiro; caso a string seja nula, 
+// retorna 0, o valor do argumento padrão
+fun getInteiro(s: String?, padrao: Int = 0): Int {
+	if (s != null) {
+		return s.toInt()
+	}
+	return padrao
+}
+//////////////////////////////////////////////////////
+/* Funções - Argumento Nomeados */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) { 
+    teste("Carmen", "Regina", "Impacta") 
+    teste("Carmen") 
+    teste("Carmen", faculdade = "Impacta") 
+}
+fun teste(nome: String?, 
+          sobrenome: String? = null, 
+          faculdade: String? = null) { 
+    println("Nome: $nome, 
+             Sobrenome: $sobrenome, 
+             Faculdade: $faculdade") 
+} 
+//////////////////////////////////////////////////////
+/* Funções - vararg */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) { 
+    var list = toList("ADS","BD","GTI") 
+    print(list) 
+} 
+
+fun toList(vararg args: String): List<String> { 
+    val list = ArrayList<String>() 
+    for (s in args) 
+       list.add(s) 
+    return list 
+}
+//////////////////////////////////////////////////////
+/* Funções - Tipos Genéricos */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) { 
+    var list = toList<String>("ADS", "BD", "GTI") 
+    println(list) 
+    val ints = toList<Int>(1, 2, 3, 4, 5)
+    println(ints)
+} 
+
+fun <T> toList(vararg args: T): List<T> { 
+    val list = ArrayList<T>() 
+    for (s in args) 
+       list.add(s) 
+    return list 
+} 
+//////////////////////////////////////////////////////
+/* Classes */
+package org.kotlinlang.play
+
+class Aluno(nome: String, idade: Int) { 
+    val nome: String 
+    val idade: Int
+
+    init { 
+        // bloco de inicialização 
+        this.nome = nome 
+        this.idade = idade 
+    } 
+
+    override fun toString(): String { 
+        return "Aluno: $nome, 
+                idade: $idade" 
+    } 
+} 
+
+fun main(args: Array<String>) { 
+    val a1 = Aluno("Carmen", 20) 
+    println(a1) 
+    println("Aluno: ${a1.nome}, 
+    idade: ${a1.idade}") 
+}     
+//////////////////////////////////////////////////////
+/* Herança */
+package org.kotlinlang.play
+
+open class Pessoa(nome: String, idade: Int) { 
+    val nome: String 
+		val idade: Int
+		
+    init {
+    // bloco de inicialização 
+    this.nome = nome 
+    this.idade = idade 
+    } 
+		
+    open fun adicionarDesconto(desconto: Int) { 
+        println("Desconto para a pessoa de $desconto") 
+    }
+		
+    override fun toString(): String { 
+        return "Pessoa: $nome, idade: $idade" 
+    } 
+} 
+
+class Aluno(nome: String, idade: Int): Pessoa(nome, idade) { 
+    override fun adicionarDesconto(desconto: Int) { 
+        println("Desconto para o aluno de $desconto") 
+    } 
+} 
+
+fun main(args: Array<String>) { 
+    val a1 = Aluno("Carmen", 20) 
+    println(a1) 
+    println("Aluno: ${a1.nome}, idade: ${a1.idade}") 
+    a1.adicionarDesconto(10) 
+} 
+//////////////////////////////////////////////////////
+/* Listas */
+package org.kotlinlang.play
+
+fun main(args: Array<String>) { 
+    // lista com ArrayList 
+    var arrayListInt = ArrayList<Int>() 
+    arrayListInt.add(1) 
+    arrayListInt.add(2) 
+    arrayListInt.add(3) 
+    println(arrayListInt) 
+    // mesma lista utilizando mutableListOf 
+    var mutableListInt = mutableListOf(1, 2, 3) 
+    println(mutableListInt) 
+    // adicionar 
+    mutableListInt.add(4) 
+    println(mutableListInt)
+		// lista imutável 
+    var listString = listOf("a", "b", "c") 
+    println(listString) 
+    // adicionar - erro 
+    listString.add("d") 
+    println(listString) 
+} 
+//////////////////////////////////////////////////////
+/* Enum */
+package org.kotlinlang.play
+
+//enum simples 
+enum class Status {ATIVO, INATIVO} 
+
+// enum com construtor 
+enum class Conceitos(val nota: String) { 
+    APROVADO("A"), 
+    RECUPERACAO("B"), 
+    REPROVADO("C") 
+} 
+
+fun main(args: Array<String>) { 
+    val status = Status.ATIVO 
+    println(status) 
+    val conceito = Conceitos.APROVADO.nota 
+    println(conceito) 
+}
+//////////////////////////////////////////////////////
+/* High-Order Functions e Lambda */
+package org.kotlinlang.play
+
+fun filtrar(list: List<Int>, 
+            filtro: (Int) -> (Boolean)): List<Int> { 
+    val newList = arrayListOf<Int>() 
+    for (item in list) { 
+        if (filtro(item)) { 
+            newList.add(item) 
+        } 
+    } 
+    return newList 
+} 
+
+fun numerosPares(numero: Int) = numero % 2 == 0 
+
+fun numerosMaioresQue3(numero: Int) = numero > 3 
+
+fun main(args: Array<String>) { 
+    var ints = listOf(1, 2, 3, 4, 5) 
+    println(ints) 
+    var list = filtrar(ints, ::numerosPares) 
+    println(list) 
+    list = filtrar(ints, ::numerosMaioresQue3) 
+    println(list) 
+} 
+//////////////////////////////////////////////////////
+/* High-Order Functions e Lambda */
+package org.kotlinlang.play
+
+fun filtrar(list: List<Int>, 
+            filtro: (Int) -> (Boolean)): List<Int> { 
+    val newList = arrayListOf<Int>() 
+    for (item in list) { 
+        if (filtro(item)) { 
+            newList.add(item) 
+        } 
+    } 
+    return newList 
+} 
+
+fun numerosPares(numero: Int) = numero % 2 == 0 
+
+fun numerosMaioresQue3(numero: Int) = numero > 3 
+
+fun main(args: Array<String>) { 
+    var ints = listOf(1, 2, 3, 4,5) 
+    println(ints)
+		
+    // forma 1 
+    var list = filtrar(ints, {numero:Int -> numerosPares(numero)}) 
+    println(list) 
+		
+    // forma 2 
+    list = filtrar(ints, {numerosMaioresQue3(it)}) 
+    println(list)
+		
+    // forma 3 
+    list = filtrar(ints) {numerosMaioresQue3(it)} 
+    println(list) 
+} 
+//////////////////////////////////////////////////////
+* Funções Anônimas */
+package org.kotlinlang.play
+
+fun filtrar(list: List<Int>, 
+            filtro: (Int) -> (Boolean)): List<Int> { 
+    val newList = arrayListOf<Int>() 
+    for (item in list) { 
+        if (filtro(item)) { 
+            newList.add(item) 
+        } 
+    } 
+    return newList 
+} 
+
+fun numerosPares(numero: Int) = numero % 2 == 0 
+
+fun numerosMaioresQue3(numero: Int) = numero > 3 
+
+fun main(args: Array<String>) { 
+    var ints = listOf(1,2,3,4,5) 
+    println(ints) 
+    var list = filtrar(ints) {it % 2 == 0} 
+    println(list) 
+    list = filtrar(ints) {it > 3} 
+    println(list)
+}
+//////////////////////////////////////////////////////
+Programas Kotlin - Introdução.txt
+Exibindo Programas Kotlin - Introdução.txt…
